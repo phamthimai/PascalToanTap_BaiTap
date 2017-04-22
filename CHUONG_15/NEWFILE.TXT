@@ -1,0 +1,50 @@
+1 Program CheDau_ChiDoc_TapTin;
+2 Uses Dos,Crt;
+3 Var
+4 	f : File; {hoac f : Text }
+5    Filename : String;
+6    Ch : Char;
+7 Begin
+8 	Repeat
+9 		ClrScr;
+10    	TextColor(14);
+11    	TextBackGround(2);
+12    	GotoXY(23,4);
+13 		Writeln('DAT THUOC TINH CHE DAU TAP TIN');
+14    	GotoXY(23,5);
+15 		Writeln('------------------------------');
+16    	Writeln;
+17    	TextColor(12);
+18    	GotoXY(11,6);
+19    	Writeln('*Khong hien thi duoc ten tap tin khi dung lenh DIR cua DOS*');
+20    	GotoXY(15,8);
+21    	TextColor(1);
+22    	TextBackGround(14);
+23    	Write('-Cho biet ten tap tin: ');
+24       Readln(Filename);
+25       TextColor(4+Blink);
+26       TextBackGround(14);
+27       GotoXY(25,24);
+28       Writeln('DANG THUC HIEN, XIN CHO DOI...');
+29       Assign(f,Filename);
+30       SetFAttr(f,Hidden);
+31       TextColor(4);
+32       TextBackGround(15);
+33       GotoXY(15,10);
+34       Case DosError Of
+35       	0 : Writeln('Da hoan thanh tot dep');
+36          2 : Writeln('Khong tim thay tap tin nay');
+37          3 : Writeln('Khong tim thay duong dan')
+38       Else
+39       	Writeln('Tap tin duoc bao ve, khong sua duoc');
+40       End;
+41       GotoXY(19,24);
+42       TextColor(14);
+43       TextBackGround(4);
+44       Writeln('Bam phim bat ky de tiep tuc, <Esc> de thoat ');
+45       Ch := Readkey;
+46       TextColor(White);
+47    	TextBackGround(Black);
+48    	ClrScr;
+49    Until Ch = #27;
+50 End.
